@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 public class TaskServiceImplementation implements TaskService{
-    private TaskRepository taskRepository;
+    private final TaskRepository taskRepository;
 
     @Autowired
     public TaskServiceImplementation(TaskRepository taskRepository) {
@@ -36,7 +36,7 @@ public class TaskServiceImplementation implements TaskService{
     public void updateTask(String taskId, Task toUpdate) throws TaskNotFoundException
     {
         Task taskInDb = taskRepository.findById(taskId).orElseThrow(() -> new TaskNotFoundException(taskId));
-
-        // if ()
+        taskInDb.update(toUpdate);
+        taskRepository.save(taskInDb);
     }
 }
