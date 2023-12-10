@@ -39,4 +39,9 @@ public class TaskServiceImplementation implements TaskService{
         taskInDb.update(toUpdate);
         taskRepository.save(taskInDb);
     }
+
+    public void deleteTask(String taskId)
+    {
+        taskRepository.deleteById(taskId);
+    }
 }

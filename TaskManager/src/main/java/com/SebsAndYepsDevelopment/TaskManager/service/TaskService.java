@@ -11,4 +11,5 @@ public interface TaskService {
     Task getTaskById(String id) throws TaskNotFoundException;
     void createTask(Task task);
     void updateTask(String taskId, Task toUpdate) throws TaskNotFoundException;
+    void deleteTask(String taskId);
 }
