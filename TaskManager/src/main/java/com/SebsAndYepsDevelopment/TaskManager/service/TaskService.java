@@ -1,17 +1,14 @@
 package com.SebsAndYepsDevelopment.TaskManager.service;
 
-import com.SebsAndYepsDevelopment.TaskManager.reposiroty.TaskRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.SebsAndYepsDevelopment.TaskManager.entity.Task;
+import com.SebsAndYepsDevelopment.TaskManager.exceptions.TaskNotFoundException;
 import org.springframework.stereotype.Service;
 
-@Service
-public class TaskService {
-    private TaskRepository taskRepository;
+import java.util.List;
 
-    @Autowired
-    public TaskService(TaskRepository taskRepository) {
-        this.taskRepository = taskRepository;
-    }
-
-
+public interface TaskService {
+    List<Task> getAllTasks();
+    Task getTaskById(String id) throws TaskNotFoundException;
+    void createTask(Task task);
+    void updateTask(String taskId, Task toUpdate) throws TaskNotFoundException;
 }
