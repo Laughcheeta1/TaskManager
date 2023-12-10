@@ -18,7 +18,13 @@ public class UserServiceImplementation implements UserService{
 
     @Override
     public User getUserById(String id) throws UserNotFoundException {
-        return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
+        return userRepository.findById(id).orElseThrow(UserNotFoundException::new);
+    }
+
+    @Override
+    public User getUserByUserName(String userName) throws UserNotFoundException
+    {
+        return userRepository.findByUserName(userName).orElseThrow(UserNotFoundException::new);
     }
 
     @Override
@@ -28,7 +34,7 @@ public class UserServiceImplementation implements UserService{
 
     @Override
     public void updateUser(String id, User toUpdate) throws UserNotFoundException {
-        User userInDb = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
+        User userInDb = userRepository.findById(id).orElseThrow(UserNotFoundException::new);
         userInDb.update(toUpdate);
         userRepository.save(userInDb);
     }

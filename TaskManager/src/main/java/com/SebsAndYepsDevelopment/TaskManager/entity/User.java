@@ -16,7 +16,7 @@ public class User implements Updatable<User> {
     private String secondName;
     private String number;
     private String email;
-    private String userName;
+    private String userName; // TODO: make this unique in the database
     private String password;
 
     @Override
