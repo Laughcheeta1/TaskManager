@@ -3,7 +3,6 @@ package com.SebsAndYepsDevelopment.TaskManager.controller;
 import com.SebsAndYepsDevelopment.TaskManager.entity.User;
 import com.SebsAndYepsDevelopment.TaskManager.exceptions.UserNotFoundException;
 import com.SebsAndYepsDevelopment.TaskManager.service.UserService;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,29 +19,13 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable("id") String id)
-    {
-        try
-        {
-            return ResponseEntity.ok(userService.getUserById(id));
-        }
-        catch (UserNotFoundException e)
-        {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
+    public ResponseEntity<User> getUserById(@PathVariable("id") String id) throws UserNotFoundException {
+        return ResponseEntity.ok(userService.getUserById(id));
     }
 
     @GetMapping("/username/{username}")
-    public ResponseEntity<User> getUserByUsername(@PathVariable("username") String username)
-    {
-        try
-        {
-            return ResponseEntity.ok(userService.getUserByUserName(username));
-        }
-        catch (UserNotFoundException e)
-        {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
+    public ResponseEntity<User> getUserByUsername(@PathVariable("username") String username) throws UserNotFoundException {
+        return ResponseEntity.ok(userService.getUserByUserName(username));
     }
 
     @PostMapping
@@ -53,17 +36,9 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateUser(@PathVariable("id") String id, @RequestBody User toUpdate)
-    {
-        try
-        {
-            userService.updateUser(id, toUpdate);
-            return ResponseEntity.status(HttpStatus.ACCEPTED).body("The user has successfully been updated");
-        }
-        catch (UserNotFoundException e)
-        {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-        }
+    public ResponseEntity<String> updateUser(@PathVariable("id") String id, @RequestBody User toUpdate) throws UserNotFoundException {
+        userService.updateUser(id, toUpdate);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body("The user has successfully been updated");
     }
 
     @DeleteMapping("/{id}")
