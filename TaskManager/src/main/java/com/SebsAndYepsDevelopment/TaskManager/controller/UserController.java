@@ -18,33 +18,16 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable("id") String id) throws UserNotFoundException {
-        return ResponseEntity.ok(userService.getUserById(id));
-    }
+    @GetMapping("/login")
+    public ResponseEntity<String> loginUser(@RequestBody User user)
+    {
 
-    @GetMapping("/username/{username}")
-    public ResponseEntity<User> getUserByUsername(@PathVariable("username") String username) throws UserNotFoundException {
-        return ResponseEntity.ok(userService.getUserByUserName(username));
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> addUser(@RequestBody User user)
+    public ResponseEntity<String> registerUser(@RequestBody User user)
     {
         userService.addUser(user);
         return ResponseEntity.status(HttpStatus.CREATED).body("The user has successfully been created");
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<String> updateUser(@PathVariable("id") String id, @RequestBody User toUpdate) throws UserNotFoundException {
-        userService.updateUser(id, toUpdate);
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body("The user has successfully been updated");
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteUser(@PathVariable("id") String id)
-    {
-        userService.deleteUser(id);
-        return ResponseEntity.ok().body("The user has successfully been deleted");
     }
 }
