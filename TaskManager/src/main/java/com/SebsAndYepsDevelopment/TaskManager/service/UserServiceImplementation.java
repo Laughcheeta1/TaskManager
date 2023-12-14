@@ -1,7 +1,9 @@
 package com.SebsAndYepsDevelopment.TaskManager.service;
 
 import com.SebsAndYepsDevelopment.TaskManager.entity.User;
+import com.SebsAndYepsDevelopment.TaskManager.exceptions.InvalidUserNameException;
 import com.SebsAndYepsDevelopment.TaskManager.exceptions.UserNotFoundException;
+import com.SebsAndYepsDevelopment.TaskManager.exceptions.WrongPasswordException;
 import com.SebsAndYepsDevelopment.TaskManager.reposiroty.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,32 +17,18 @@ public class UserServiceImplementation implements UserService{
         this.userRepository = userRepository;
     }
 
-
     @Override
-    public User getUserById(String id) throws UserNotFoundException {
-        return userRepository.findById(id).orElseThrow(UserNotFoundException::new);
+    public void loginUser(User user) throws UserNotFoundException, WrongPasswordException {
+        User userInDatabase = userRepository.findByUserName(user.getUserName()).orElseThrow(UserNotFoundException::new);
+        if (user.getPassword().compareTo(userInDatabase.getPassword()) != 0)
+            throw new WrongPasswordException();
     }
 
     @Override
-    public User getUserByUserName(String userName) throws UserNotFoundException
-    {
-        return userRepository.findByUserName(userName).orElseThrow(UserNotFoundException::new);
-    }
+    public void registerUser(User user) throws InvalidUserNameException {
+        if (userRepository.findByUserName(user.getUserName()).isEmpty())
+            throw new InvalidUserNameException();
 
-    @Override
-    public void addUser(User user) {
         userRepository.insert(user);
-    }
-
-    @Override
-    public void updateUser(String id, User toUpdate) throws UserNotFoundException {
-        User userInDb = userRepository.findById(id).orElseThrow(UserNotFoundException::new);
-        userInDb.update(toUpdate);
-        userRepository.save(userInDb);
-    }
-
-    @Override
-    public void deleteUser(String id) {
-        userRepository.deleteById(id);
     }
 }

@@ -20,4 +20,16 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
     {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
+
+    @ExceptionHandler(InvalidUserNameException.class)
+    public ResponseEntity<String> handleInvalidUserNameException(InvalidUserNameException e, WebRequest webRequest)
+    {
+        return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(e.getMessage());
+    }
+
+    @ExceptionHandler(WrongPasswordException.class)
+    public ResponseEntity<String> handleWrongPasswordException(WrongPasswordException e, WebRequest webRequest)
+    {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
+    }
 }

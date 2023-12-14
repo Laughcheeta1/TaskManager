@@ -1,7 +1,9 @@
 package com.SebsAndYepsDevelopment.TaskManager.controller;
 
 import com.SebsAndYepsDevelopment.TaskManager.entity.User;
+import com.SebsAndYepsDevelopment.TaskManager.exceptions.InvalidUserNameException;
 import com.SebsAndYepsDevelopment.TaskManager.exceptions.UserNotFoundException;
+import com.SebsAndYepsDevelopment.TaskManager.exceptions.WrongPasswordException;
 import com.SebsAndYepsDevelopment.TaskManager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,15 +21,14 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public ResponseEntity<String> loginUser(@RequestBody User user)
-    {
-
+    public ResponseEntity<String> loginUser(@RequestBody User user) throws UserNotFoundException, WrongPasswordException {
+        userService.loginUser(user);
+        return ResponseEntity.ok("The user has logged in");
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> registerUser(@RequestBody User user)
-    {
-        userService.addUser(user);
+    public ResponseEntity<String> registerUser(@RequestBody User user) throws InvalidUserNameException {
+        userService.registerUser(user);
         return ResponseEntity.status(HttpStatus.CREATED).body("The user has successfully been created");
     }
 }
