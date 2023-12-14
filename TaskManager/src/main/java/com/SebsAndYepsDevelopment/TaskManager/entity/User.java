@@ -12,24 +12,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class User implements Updatable<User> {
     @Id
     private String id;
-    private String firstName;
-    private String secondName;
-    private String number;
     private String email;
     private String userName; // TODO: make this unique in the database
     private String password;
 
     @Override
     public void update(User newValues) {
-        if (newValues.getFirstName() != null)
-            setFirstName(newValues.getFirstName());
-
-        if (newValues.getSecondName() != null)
-            setSecondName(newValues.getSecondName());
-
-        if (newValues.getNumber() != null)
-            setNumber(newValues.getNumber());
-
         if (newValues.getEmail() != null)
             setEmail(newValues.getEmail());
 
