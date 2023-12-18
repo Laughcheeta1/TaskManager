@@ -1,82 +1,113 @@
-import { createContext, useContext, useState } from "react";
-import {
-  createTaskRequest,
-  getTasksRequest,
-  deleteTaskRequest,
-  getTaskRequest,
-  updateTaskRequest,
-} from "../api/tasks";
+import { createContext, useContext, useState, useEffect } from "react";
 
-const TaskContext = createContext();
+import {
+  getAllTasksRequest,
+  getTaskRequest,
+  createTaskRequest,
+  deleteTaskRequest,
+  updateTaskRequest,
+} from "../api/tasks.js";
+
+
+const TasksContext = createContext();
 
 export const useTasks = () => {
-  const context = useContext(TaskContext);
-  if (!context) throw new Error("useTasks must be used within a TaskProvider");
+  const context = useContext(TasksContext);
+
+  if (!TasksContext) throw new Error("useTasks must be inside a TaskProvider");
   return context;
 };
 
-export function TaskProvider({ children }) {
+export function TasksProvider({ children })
+{
   const [tasks, setTasks] = useState([]);
+  const [errors, setErrors] = useState({});
 
   const getTasks = async () => {
-    try {
-      const res = await getTasksRequest();
-      setTasks(() => res.data);
-    } catch (error) {
+    try
+    {
+      const response = await getAllTasksRequest();
+      setTasks(response.data);
+    }
+    catch (error)
+    {
       console.log(error);
     }
   };
+
+  const getTaskById = async (id) => {
+    try
+    {
+      const response = await getTaskRequest(id);
+      return response.data;
+    }
+    catch (error)
+    {
+      console.log(error);
+    }
+  }
 
   const createTask = async (task) => {
-    try {
+    try
+    {
       await createTaskRequest(task);
       getTasks();
-    } catch (error) {
-      console.log(error.response.data);
+    }
+    catch (error)
+    {
+      console.log(error);
+      setErrors(() => error.response.data.message);
     }
   };
-
+  
   const deleteTask = async (id) => {
-    try {
-      const res = await deleteTaskRequest(id);
-      if (res.status === 204)
-        setTasks(() => tasks.filter((task) => task._id !== id));
-    } catch (error) {
+    try
+    {
+      await deleteTaskRequest(id);
+      setTasks(() => tasks.filter((task) => task.id !== id));
+    }
+    catch (error)
+    {
       console.log(error);
     }
   };
 
-  const getTask = async (id) => {
-    try {
-      const res = await getTaskRequest(id);
-      return res.data;
-    } catch (error) {
-      console.error(error);
+  const updateTask = async (id, newTaskFieds) => {
+    try
+    {
+      await updateTaskRequest(id, newTaskFieds);
+      getTasks();
+    }
+    catch (error)
+    {
+      setErrors(() => error.response.data.message);
+      console.log(error);
     }
   };
 
-  const updateTask = async (id, task) => {
-    try {
-      console.log("ID: " + id);
-      await updateTaskRequest(id, task);
-      setTasks(() => getTasks());
-    } catch (error) {
-      console.error(error);
+  useEffect(() => {
+    if (errors.length > 0)
+    {
+      const timer = setTimeout(() => {
+        setErrors(() => []);
+      }, 4000);
+      return () => clearTimeout(timer);
     }
-  };
+  }, [errors]);
 
   return (
-    <TaskContext.Provider
+    <TasksContext.Provider
       value={{
         tasks,
-        createTask,
         getTasks,
+        getTaskById,
+        createTask,
         deleteTask,
-        getTask,
         updateTask,
+        errors,
       }}
     >
       {children}
-    </TaskContext.Provider>
+    </TasksContext.Provider>
   );
 }
