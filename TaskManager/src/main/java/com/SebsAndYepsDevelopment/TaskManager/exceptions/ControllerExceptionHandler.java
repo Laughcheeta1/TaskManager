@@ -1,5 +1,6 @@
 package com.SebsAndYepsDevelopment.TaskManager.exceptions;
 
+import com.SebsAndYepsDevelopment.TaskManager.entity.NoCookiesException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -31,5 +32,12 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<String> handleWrongPasswordException(WrongPasswordException e, WebRequest webRequest)
     {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
+    }
+
+    @ExceptionHandler(NoCookiesException.class)
+    public ResponseEntity<String> handleNoCookiesException(NoCookiesException e, WebRequest webRequest)
+    {
+        // TODO: If decide to use cookies after all, make this method
+        return null;
     }
 }

@@ -25,9 +25,11 @@ public class UserServiceImplementation implements UserService{
     }
 
     @Override
-    public void registerUser(User user) throws InvalidUserNameException {
-        if (userRepository.findByUserName(user.getUserName()).isEmpty())
+    public void registerUser(User user) throws InvalidUserNameException  { // TODO: finish this
+        if (userRepository.findByUserName(user.getUserName()).isPresent())
             throw new InvalidUserNameException();
+
+        // TODO: Check if there's something to finish here, I personally do not remember
 
         userRepository.insert(user);
     }
