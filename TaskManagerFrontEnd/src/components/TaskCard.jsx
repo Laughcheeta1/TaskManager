@@ -25,17 +25,17 @@ export default function TaskCard({ task }) {
                 className="input"
                 {...register("action")}
                 >
-                    {task.status === toDoStatus ? (
+                    {task.state === toDoStatus ? (
                         <option value={toDoStatus}>{toDoStatus}</option>
                     ) : (
                         <></>
                     )}
-                    {task.status === inProgressStatus ? (
+                    {task.state === inProgressStatus ? (
                         <option value={inProgressStatus}>{inProgressStatus}</option>
                     ) : (
                         <></>
                     )}
-                    {task.status === doneStatus ? (
+                    {task.state === doneStatus ? (
                         <option value={doneStatus}>{doneStatus}</option>
                     ) : (
                         <></>
