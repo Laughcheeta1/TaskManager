@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/task")
+@CrossOrigin
 public class TaskController {
     private final TaskService taskService;
 
@@ -19,6 +20,8 @@ public class TaskController {
     public TaskController(TaskService taskService) {
         this.taskService = taskService;
     }
+
+    // TODO: get Task by name
 
     @GetMapping
     public ResponseEntity<List<Task>> getAllTasks()

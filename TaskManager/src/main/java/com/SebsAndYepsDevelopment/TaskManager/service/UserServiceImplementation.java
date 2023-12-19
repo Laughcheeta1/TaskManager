@@ -19,6 +19,7 @@ public class UserServiceImplementation implements UserService{
 
     @Override
     public void loginUser(User user) throws UserNotFoundException, WrongPasswordException {
+        System.out.println(user);
         User userInDatabase = userRepository.findByUserName(user.getUserName()).orElseThrow(UserNotFoundException::new);
         if (user.getPassword().compareTo(userInDatabase.getPassword()) != 0)
             throw new WrongPasswordException();
