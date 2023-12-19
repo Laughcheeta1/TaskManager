@@ -2,6 +2,7 @@ package com.SebsAndYepsDevelopment.TaskManager.service;
 
 import com.SebsAndYepsDevelopment.TaskManager.entity.Task;
 import com.SebsAndYepsDevelopment.TaskManager.exceptions.TaskNotFoundException;
+import com.SebsAndYepsDevelopment.TaskManager.proyectEnums.State;
 import com.SebsAndYepsDevelopment.TaskManager.reposiroty.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.task.TaskRejectedException;
@@ -20,7 +21,9 @@ public class TaskServiceImplementation implements TaskService{
 
     public List<Task> getAllTasks()
     {
-        return taskRepository.findAll();
+        List<Task> tasks = taskRepository.findAll();
+        System.out.println(tasks);
+        return tasks;
     }
 
     public Task getTaskById(String id) throws TaskNotFoundException {
@@ -43,5 +46,15 @@ public class TaskServiceImplementation implements TaskService{
     public void deleteTask(String taskId)
     {
         taskRepository.deleteById(taskId);
+    }
+
+    @Override
+    public void changeTaskState(String id, State state) {
+        Task taskInDb = taskRepository.findById(id).orElse(null); // This never going to be null, because of the way the front end works, this always exists.
+        if (taskInDb == null || taskInDb.getState() == state)
+            return;
+
+        taskInDb.setState(state);
+        taskRepository.save(taskInDb);
     }
 }

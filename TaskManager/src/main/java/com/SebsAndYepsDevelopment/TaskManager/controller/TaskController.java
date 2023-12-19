@@ -2,6 +2,7 @@ package com.SebsAndYepsDevelopment.TaskManager.controller;
 
 import com.SebsAndYepsDevelopment.TaskManager.entity.Task;
 import com.SebsAndYepsDevelopment.TaskManager.exceptions.TaskNotFoundException;
+import com.SebsAndYepsDevelopment.TaskManager.proyectEnums.State;
 import com.SebsAndYepsDevelopment.TaskManager.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,7 +13,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/task")
-@CrossOrigin
 public class TaskController {
     private final TaskService taskService;
 
@@ -52,5 +52,12 @@ public class TaskController {
     {
         taskService.deleteTask(id);
         return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @PutMapping("/changeState/{id}/state/{newState}")
+    public ResponseEntity<String> changeTaskState(@PathVariable("id") String id, @PathVariable("newState") State state)
+    {
+        taskService.changeTaskState(id, state);
+        return ResponseEntity.ok(String.format("The state of the task %s has been successfully changed to %s", id, state));
     }
 }
