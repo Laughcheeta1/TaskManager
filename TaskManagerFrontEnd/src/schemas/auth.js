@@ -2,10 +2,10 @@ import { z } from "zod";
 
 export const loginSchema = z.object({
   userName: z.string().min(1, {
-    message: "Ingrese un nombre de usuario"
+    message: "Enter a username"
   }),
   password: z.string().min(6, {
-    message: "La contraseña debe tener al menos 6 caracteres",
+    message: "Password must be at least 6 characters",
   }),
 });
 
@@ -13,22 +13,22 @@ export const registerSchema = z
   .object({
     userName: z
       .string({
-        required_error: "Ingrese un nombre de usuario",
+        required_error: "Enter a username",
       })
       .min(3, {
-        message: "El nombre de usuario debe tener al menos 3 caracteres",
+        message: "The username must have at least 3 characters",
       }),
     email: z.string().email({
-      message: "Ingrese un correo válido",
+      message: "Enter a valid mail",
     }),
     password: z.string().min(6, {
-      message: "La contraseña debe tener al menos 6 caracteres",
+      message: "The password must be at least 6 characters long",
     }),
     confirmPassword: z.string().min(6, {
-      message: "La contraseña debe tener al menos 6 caracteres",
+      message: "The password must be at least 6 characters long",
     }),
   })
   .refine((data) => data.password === data.confirmPassword, {
-    message: "Las contraseñas no coinciden",
+    message: "The password do not coincide",
     path: ["confirmPassword"],
   });

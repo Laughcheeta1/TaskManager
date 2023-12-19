@@ -42,12 +42,12 @@ function LoginPage() {
                 marginBottom: ".6rem",
               }}
             >
-              Bienvenido de nuevo
+              Welcome again
             </h1>
           </div>
 
           <label className="input-label" htmlFor="userName">
-            Nombre de usuario:
+            User name:
             <p style={{ marginLeft: "1rem" }} className="input-errors">
               {errors.userName?.message}
             </p>
@@ -58,11 +58,11 @@ function LoginPage() {
             name="userName"
             {...register("userName", { required: true })}
             className="auth-input"
-            placeholder="Nombre de usuario"
+            placeholder="user name"
           />
 
           <label className="input-label">
-            Contraseña:
+            Password:
             <p style={{ marginLeft: "1rem" }} className="input-errors">
               {errors.password?.message}
             </p>
@@ -73,7 +73,7 @@ function LoginPage() {
             name="password"
             {...register("password", { required: true })}
             className="auth-input"
-            placeholder="Contraseña"
+            placeholder="password"
           />
 
           <button

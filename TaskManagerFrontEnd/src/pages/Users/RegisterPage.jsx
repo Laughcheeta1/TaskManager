@@ -46,16 +46,16 @@ function RegisterPage() {
                 marginBottom: "1rem",
               }}
             >
-              Crea tu cuenta.
+              Create account
             </h1>
             <p style={{ fontSize: "14px" }}>
-              Crea tu cuenta para acceder a{" "}
-              <span style={{ fontWeight: "600" }}>Espacios Móviles S.A.S.</span>
+              Create your account to be able to access{" "}
+              <span style={{ fontWeight: "600" }}>Task Manager</span>
             </p>
           </div>
 
           <label className="input-label" htmlFor="username">
-            Nombre de usuario:
+            Username:
             {errors.username?.message && (
               <p style={{ marginLeft: "1rem" }} className="input-errors">
                 {errors.username?.message}
@@ -68,11 +68,11 @@ function RegisterPage() {
             name="username"
             {...register("userName")}
             className="auth-input"
-            placeholder="Nombre de usuario"
+            placeholder="username"
           />
 
           <label className="input-label" htmlFor="email">
-            Correo:
+            Email:
             {errors.email?.message && (
               <p style={{ marginLeft: "1rem" }} className="input-errors">
                 {errors.email?.message}
@@ -85,11 +85,11 @@ function RegisterPage() {
             name="email"
             {...register("email")}
             className="auth-input"
-            placeholder="Correo electrónico"
+            placeholder="email"
           />
 
           <label className="input-label" htmlFor="password">
-            Contraseña:
+            Password:
             {errors.password?.message && (
               <p style={{ marginLeft: "1rem" }} className="input-errors">
                 {errors.password?.message}
@@ -102,11 +102,11 @@ function RegisterPage() {
             name="password"
             {...register("password")}
             className="auth-input"
-            placeholder="Contraseña"
+            placeholder="password"
           />
 
           <label className="input-label" htmlFor="confirmPassword">
-            Confirmar contraseña:
+            Confirm password:
             {errors.confirmPassword?.message && (
               <p style={{ marginLeft: "1rem" }} className="input-errors">
                 {errors.confirmPassword?.message}
@@ -119,7 +119,7 @@ function RegisterPage() {
             name="confirmPassword"
             {...register("confirmPassword")}
             className="auth-input"
-            placeholder="Confirmar contraseña"
+            placeholder="confirm password"
           />
 
           <button
@@ -127,7 +127,7 @@ function RegisterPage() {
             className="btn btn-verde"
             type="submit"
           >
-            Registrar
+            Register
           </button>
         </form>
       </div>

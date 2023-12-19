@@ -29,6 +29,8 @@ export function TasksProvider({ children })
   const { user } = useAuth();
 
   const processTask = (task) => { // This is supposed to process the task after it comes out the Add new task page.
+    console.log("inside the process task, the user is: ");
+    console.log(user);
     if (task["expirationDate"])
         task["expirationDate"] = new Date(task["expirationDate"]);
     
@@ -41,7 +43,7 @@ export function TasksProvider({ children })
   const getTaskByName = async (name) => {
     try
     {
-      const response = await getTaskByNameRequest(name);
+      const response = await getTaskByNameRequest(name, user.userName);
       setTasks(response.data);
     }
     catch (error)
@@ -53,7 +55,8 @@ export function TasksProvider({ children })
   const getTasks = async () => {
     try
     {
-      const response = await getAllTasksRequest();
+      console.log("the user is" + user);
+      const response = await getAllTasksRequest(user.userName);
       setTasks(response.data);
     }
     catch (error)
@@ -65,7 +68,7 @@ export function TasksProvider({ children })
   const getTaskById = async (id) => {
     try
     {
-      const response = await getTaskRequest(id);
+      const response = await getTaskRequest(id, user.userName);
       return response.data;
     }
     catch (error)
@@ -75,6 +78,8 @@ export function TasksProvider({ children })
   }
 
   const createTask = async (task) => {
+    console.log("About to process the task");
+    console.log(user);
     task = processTask(task);
     try
     {

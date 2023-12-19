@@ -17,33 +17,24 @@ export const AuthProvider = ({ children }) => {
 
   const signUp = async (user) => {  
     try {
-      console.log("User to be registered: ");
-      console.log(user);
       const res = await registerRequest(user);
       if (res.status === 201) {
         setUser(res.data);
         setIsAuthenticated(true);
       }
     } catch (error) {
-      console.log(error);
       setErrors(() => [error.response.data]);
-      console.log("the current error is: ")
-      console.log(errors);
     }
   };
 
   const signin = async (user) => {
     try {
-      console.log("User to be logged in: ");
-      console.log(user);
       const res = await loginRequest(user);
+      console.log(res);
       setUser(res.data);
       setIsAuthenticated(true);
     } catch (error) { 
-      console.log(error);
       setErrors(() => [error.response.data]);
-      console.log("the current error is: ")
-      console.log(errors);
     }
   };
 

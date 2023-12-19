@@ -1,10 +1,10 @@
 import axios from "./axios";
 
-export const getTaskByNameRequest = async (name) => axios.get(`/task/getTaskByName/${name}`);
+export const getTaskByNameRequest = async (name, userName) => axios.get(`/task/user/${userName}/getTaskByName/${name}`);
 
-export const getAllTasksRequest = async () => axios.get("/task");
+export const getAllTasksRequest = async (userName) => axios.get(`/task/user/${userName}`);
 
-export const getTaskRequest = async (id) => axios.get(`/task/${id}`);
+export const getTaskRequest = async (id, userName) => axios.get(`/task/user/${userName}/task/${id}`);
 
 export const changeTaskStateRequest = async (id, newState) => axios.put(`/task/changeState/${id}/state/${newState}`)
 

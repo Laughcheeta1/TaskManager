@@ -40,7 +40,7 @@ export default function Navbar() {
                   </svg>
                 </button>
                 <p style={{ fontSize: "14px", fontWeight: "400" }}>
-                  {user.username}
+                  {user.userName}
                 </p>
               </>
             ) : PATH === "/login" ? (

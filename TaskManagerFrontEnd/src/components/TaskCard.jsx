@@ -35,28 +35,13 @@ export default function TaskCard({ task }) {
                     <option value={inProgressStatus}>{inProgressStatus}</option>
                     <option value={doneStatus}>{doneStatus}</option>
                 </select>
-
-                <h1
-                style={{ marginRight: "1rem", fontSize: "18px", fontWeight: "500" }}
-                >
-                {task.name}
-                </h1>
-
-                <div
-                style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
-                    gap: "1rem",
-                }}
-                >
-                    <AlertDialogEliminar deleteMethod={deleteTask} objectID={task.id} />
-
-                    <Link to={`/task/edit/${task.id}`} className="btn btn-azul">
-                        Edit
-                    </Link>
-                </div>
             </header>
+            <h1
+            style={{ marginRight: "1rem", fontSize: "18px", fontWeight: "500" }}
+            >
+                {task.name}
+            </h1>
+            
 
             <p style={{ marginRight: "1rem", fontSize: "16px" }}>
                 {task.expirationDate && (
@@ -65,7 +50,7 @@ export default function TaskCard({ task }) {
                     </p>
                 )}
             </p>
-
+            
             <div
                 style={{
                     display: "flex",
@@ -77,6 +62,21 @@ export default function TaskCard({ task }) {
                 <Link to={`/task/${task.id}`} className="btn btn-azul">
                     See more
                 </Link>
+            </div>
+
+            <div
+            style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                gap: "1rem",
+            }}
+            >
+                <AlertDialogEliminar deleteMethod={deleteTask} objectID={task.id} />
+
+                {/* <Link to={`/task/edit/${task.id}`} className="btn btn-azul">
+                    Edit
+                </Link> */}
             </div>
         </div>
     );
