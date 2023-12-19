@@ -23,7 +23,7 @@ export const useTasks = () => {
 export function TasksProvider({ children })
 {
   const [tasks, setTasks] = useState([]);
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState([]);
 
   const getTaskByName = async (name) => {
     try
@@ -70,7 +70,7 @@ export function TasksProvider({ children })
     catch (error)
     {
       console.log(error);
-      setErrors(() => error.response.data.message);
+      setErrors(() => [error.response.data.message]);
     }
   };
   
@@ -106,7 +106,7 @@ export function TasksProvider({ children })
     }
     catch (error)
     {
-      setErrors(() => error.response.data.message);
+      setErrors(() => [error.response.data.message]);
       console.log(error);
     }
   };

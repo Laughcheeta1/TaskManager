@@ -85,21 +85,6 @@ export default function TaskFormPage() {
             </div>
 
             <div className="group">
-                {errors.expirationDate?.message ? <p>{errors.expirationDate?.message}</p> : null}
-
-                <div className="input-group">
-                    <label htmlFor="expirationDate">Expiration Date:</label>
-                    <input
-                        type="text"
-                        name="expirationDate"
-                        placeholder="ej: DD-MM-YYYY"
-                        className="input"
-                        {...register("expirationDate", { required: false })}
-                    />
-                </div>
-            </div>
-
-            <div className="group">
                 {errors.state?.message ? <p>{errors.state?.message}</p> : null}
 
                 <div className="input-group">
