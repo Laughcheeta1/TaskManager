@@ -29,19 +29,6 @@ export default function Navbar() {
   return (
     <div className="navbar-container">
       <div className="navbar">
-        <nav className="links">
-          <ul>
-            {PAGES.filter((page) =>
-              PATH === "/" ||
-              PATH === "/login" ||
-              PATH === "/register" ||
-              PATH === "/tasks" ||
-              PATH === "/menu"
-                ? false
-                : page.props.to !== PATH
-            )}
-          </ul>
-        </nav>
         <nav className="tools">
           <ul>
             {isAuthenticated ? (

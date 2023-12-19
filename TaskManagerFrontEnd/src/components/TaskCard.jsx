@@ -65,6 +65,19 @@ export default function TaskCard({ task }) {
                     </p>
                 )}
             </p>
+
+            <div
+                style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    gap: ".5rem",
+                    alignItems: "center",
+                }}
+                >
+                <Link to={`/task/${task.id}`} className="btn btn-azul">
+                    Ver más
+                </Link>
+            </div>
         </div>
     );
 }

@@ -5,6 +5,7 @@ import LoginPage from "./pages/Users/LoginPage";
 
 import HomePage from "./pages/HomePage";
 import TaskPage from "./pages/TaskPage";
+import IndividualTaskPage from "./pages/Tasks/IndividualTaskPage";
 
 import TaskFormPage from "./pages/Tasks/Add_ModifyTask";
 
@@ -27,6 +28,7 @@ export default function App() {
                   <Route path="/login" element={<LoginPage />} />
                   <Route path="/register" element={<RegisterPage />} />
                   <Route path="/add_task" element={<TaskFormPage />} />
+                  <Route path="/task/:id" element={<IndividualTaskPage />} />
 
                   <Route element={<ProtectedRoute />}>
                     <Route path="/task_page" element={<TaskPage />} />
