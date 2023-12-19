@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import { processTask } from "../misc/ProcessData.js";
 
 import {
   getTaskByNameRequest,
@@ -62,6 +63,7 @@ export function TasksProvider({ children })
   }
 
   const createTask = async (task) => {
+    task = processTask(task);
     try
     {
       await createTaskRequest(task);

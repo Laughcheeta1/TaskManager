@@ -106,6 +106,22 @@ export default function TaskFormPage() {
             </div>
 
             <div className="group">
+              {errors.expirationDate?.message ? (
+                <p>{errors.expirationDate?.message}</p>
+              ) : null}
+
+              <div className="input-group">
+                <label htmlFor="expirationDate">Expiration Date:</label>
+                <input
+                  type="date"
+                  name="expirationDate"
+                  className="input"
+                  {...register("expirationDate", { required: true })}
+                />
+              </div>
+            </div>
+
+            <div className="group">
                 {errors.description?.message ? <p>{errors.description?.message}</p> : null}
 
                 <div className="input-group">
@@ -120,28 +136,10 @@ export default function TaskFormPage() {
                 </div>
             </div>
 
-          <div className="group">
-            {errors.expirationDate?.message ? (
-              <p>{errors.expirationDate?.message}</p>
-            ) : null}
-
-            <div className="input-group">
-              <label htmlFor="expirationDate">Expiration Date:</label>
-              <input
-                type="date"
-                name="expirationDate"
-                className="input"
-                {...register("expirationDate", { required: true })}
-              />
-            </div>
-          </div>
-
-          
-
           <div style={{ marginTop: "1rem" }} className="container-group">
             <AlertDialogCrear
-              buttonMessage="Guardar ítem"
-              descriptionMessage="Se guardará un nuevo ítem con la información que ingresaste"
+              buttonMessage="Save Task"
+              descriptionMessage="A new task will be saved with the information you entered."
               onSubmit={handleSubmit(onSubmit)}
             />
 
