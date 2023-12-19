@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 
 import {
+  getTaskByNameRequest,
   getAllTasksRequest,
   getTaskRequest,
   createTaskRequest,
@@ -22,6 +23,18 @@ export function TasksProvider({ children })
 {
   const [tasks, setTasks] = useState([]);
   const [errors, setErrors] = useState({});
+
+  const getTaskByName = async (name) => {
+    try
+    {
+      const response = await getTaskByNameRequest(name);
+      setTasks(response.data);
+    }
+    catch (error)
+    {
+      console.log(error);
+    }
+  };
 
   const getTasks = async () => {
     try
@@ -100,6 +113,7 @@ export function TasksProvider({ children })
       value={{
         tasks,
         getTasks,
+        getTaskByName,
         getTaskById,
         createTask,
         deleteTask,

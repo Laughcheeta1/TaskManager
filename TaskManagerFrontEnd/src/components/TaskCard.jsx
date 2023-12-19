@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useTasks } from "../context/TasksContext";
-import { doneStatus, inProgressStatus, toDoStatus } from "../misc/TaskStatusNames";
+import { doneStatus, inProgressStatus, pendingStatus } from "../misc/TaskStatusNames";
 
 
 export default function TaskCard({ task }) {
@@ -25,8 +25,8 @@ export default function TaskCard({ task }) {
                 className="input"
                 {...register("action")}
                 >
-                    {task.state === toDoStatus ? (
-                        <option value={toDoStatus}>{toDoStatus}</option>
+                    {task.state === pendingStatus ? (
+                        <option value={pendingStatus}>{pendingStatus}</option>
                     ) : (
                         <></>
                     )}

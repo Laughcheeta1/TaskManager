@@ -1,5 +1,7 @@
 import axios from "axios";
 
+export const getTaskByNameRequest = async (name) => axios.get(`/tasks/getTaskByName/${name}`);
+
 export const getAllTasksRequest = async () => axios.get("/tasks");
 
 export const getTaskRequest = async (id) => axios.get(`/tasks/${id}`);

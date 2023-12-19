@@ -18,24 +18,29 @@ export const AuthProvider = ({ children }) => {
 
   const signUp = async (user) => {  
     try {
+      console.log("User to be registered: ");
+      console.log(user);
       const res = await registerRequest(user);
       if (res.status === 200) {
         setUser(res.data);
         setIsAuthenticated(true);
       }
     } catch (error) {
-      setErrors(() => error.response.data);
+      console.log(error);
+      setErrors(() => [error.response.data]);
     }
   };
 
   const signin = async (user) => {
     try {
+      console.log("User to be logged in: ");
+      console.log(user);
       const res = await loginRequest(user);
       setUser(res.data);
       setIsAuthenticated(true);
-    } catch (error) {
+    } catch (error) { 
       console.log(error);
-      setErrors(() => error.response.data.message);
+      setErrors(() => [error.response.data]);
     }
   };
 
@@ -58,29 +63,29 @@ export const AuthProvider = ({ children }) => {
   }, [errors]);
 
   useEffect(() => {
-    async function checkLogin() {
-      const cookies = Cookies.get();
+    // async function checkLogin() {
+    //   const cookies = Cookies.get();
 
-      if (!cookies.token) {
-        setIsAuthenticated(false);
-        setLoading(false);
-        return;
-      }
+    //   if (!cookies.token) {
+    //     setIsAuthenticated(false);
+    //     setLoading(false);
+    //     return;
+    //   }
 
-      try {
-        const res = await verifyTokenRequest(cookies.token);
+    //   try {
+    //     const res = await verifyTokenRequest(cookies.token);
 
-        if (!res.data) return setIsAuthenticated(false);
+    //     if (!res.data) return setIsAuthenticated(false);
 
-        setIsAuthenticated(true);
-        setUser(() => res.data);
-        setLoading(false);
-      } catch (error) {
-        setIsAuthenticated(false);
-        setLoading(false);
-      }
-    }
-    checkLogin();
+    //     setIsAuthenticated(true);
+    //     setUser(() => res.data);
+    //     setLoading(false);
+    //   } catch (error) {
+    //     setIsAuthenticated(false);
+    //     setLoading(false);
+    //   }
+    // }
+    // checkLogin();
     // TODO: perhaps just remove this to avoid dealing with cookies for now
   }, []);
 

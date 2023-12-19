@@ -11,7 +11,7 @@ export const loginSchema = z.object({
 
 export const registerSchema = z
   .object({
-    username: z
+    userName: z
       .string({
         required_error: "Ingrese un nombre de usuario",
       })

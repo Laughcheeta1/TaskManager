@@ -65,7 +65,7 @@ function RegisterPage() {
           <input
             type="text"
             name="username"
-            {...register("username")}
+            {...register("userName")}
             className="auth-input"
             placeholder="Nombre de usuario"
           />
