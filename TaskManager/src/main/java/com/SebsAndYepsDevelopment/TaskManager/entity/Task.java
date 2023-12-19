@@ -1,5 +1,6 @@
 package com.SebsAndYepsDevelopment.TaskManager.entity;
 
+import com.SebsAndYepsDevelopment.TaskManager.proyectEnums.AvailableColour;
 import com.SebsAndYepsDevelopment.TaskManager.proyectEnums.State;
 import com.SebsAndYepsDevelopment.TaskManager.proyectInterfaces.Updatable;
 import lombok.AllArgsConstructor;
@@ -15,13 +16,19 @@ import java.util.Date;
 public class Task implements Updatable<Task> {
     @Id
     private String id;
+    private String userName;
     private String name;
-    private String category; // TODO: define
+    private String category;
     private Date expirationDate;
     private State state;
+    private AvailableColour colour;
+    private String description;
 
     @Override
     public void update(Task newValues) {
+        if (newValues.getUserName() != null)
+            setUserName(newValues.getUserName());
+
         if (newValues.getName() != null)
             setName(newValues.getName());
 
@@ -33,5 +40,11 @@ public class Task implements Updatable<Task> {
 
         if (newValues.getState() != null)
             setState(newValues.getState());
+
+        if (newValues.getColour() != null)
+            setColour(newValues.getColour());
+
+        if (newValues.getDescription() != null)
+            setDescription(newValues.getDescription());
     }
 }

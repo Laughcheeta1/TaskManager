@@ -19,6 +19,11 @@ public class TaskServiceImplementation implements TaskService{
         this.taskRepository = taskRepository;
     }
 
+    public List<Task> getTasksByName(String name)
+    {
+        return taskRepository.getTasksByName(name);
+    }
+
     public List<Task> getAllTasks()
     {
         List<Task> tasks = taskRepository.findAll();

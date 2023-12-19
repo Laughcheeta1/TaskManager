@@ -21,7 +21,11 @@ public class TaskController {
         this.taskService = taskService;
     }
 
-    // TODO: get Task by name
+    @GetMapping("/getTaskByName/{name}")
+    public ResponseEntity<List<Task>> getTasksByName(@PathVariable("name") String name)
+    {
+        return ResponseEntity.ok(taskService.getTasksByName(name));
+    }
 
     @GetMapping
     public ResponseEntity<List<Task>> getAllTasks()
