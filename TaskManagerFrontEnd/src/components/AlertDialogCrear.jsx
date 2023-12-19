@@ -15,7 +15,7 @@ const AlertDialogCrear = ({ buttonMessage, descriptionMessage, onSubmit }) => (
 
       <AlertDialog.Content className="popUpContent">
         <AlertDialog.Title className="popUpTitle">
-          ¿Are you sure?
+          Are you sure?
         </AlertDialog.Title>
 
         <AlertDialog.Description className="popUpDescription">

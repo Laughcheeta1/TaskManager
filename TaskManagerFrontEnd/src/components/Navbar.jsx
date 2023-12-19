@@ -8,24 +8,6 @@ export default function Navbar() {
   const { isAuthenticated, logout, user } = useAuth();
   const PATH = useLocation().pathname;
 
-  const PAGES = [
-    <CustomLink key="buscar_clientes" to="/customers">
-      Clientes
-    </CustomLink>,
-    <CustomLink key="buscar_items" to="/items">
-      Items
-    </CustomLink>,
-    <CustomLink key="buscar_comodatos" to="/commodatums">
-      Comodatos
-    </CustomLink>,
-    <CustomLink key="buscar_contenedores" to="/containers">
-      Contenedores
-    </CustomLink>,
-    <CustomLink key="pagina_principal" to="/menu">
-      Inicio
-    </CustomLink>,
-  ];
-
   return (
     <div className="navbar-container">
       <div className="navbar">
@@ -38,7 +20,7 @@ export default function Navbar() {
                   onClick={() => logout()}
                   className="btn btn-naranja"
                 >
-                  Cerrar Sesión
+                  Log out
                 </Link>
 
                 <button className="avatar-usuario">
@@ -63,11 +45,11 @@ export default function Navbar() {
               </>
             ) : PATH === "/login" ? (
               <Link to="/register" className="btn btn-verde">
-                Registrarse
+                Register
               </Link>
             ) : (
               <Link to="/login" className="btn btn-naranja">
-                Iniciar Sesión
+                Log in
               </Link>
             )}
           </ul>

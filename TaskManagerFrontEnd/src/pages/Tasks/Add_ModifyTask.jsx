@@ -148,7 +148,7 @@ export default function TaskFormPage() {
               className="btn btn-gris"
               to="/task_page"
             >
-              Cancelar
+              Cancel
             </Link>
           </div>
         </form>

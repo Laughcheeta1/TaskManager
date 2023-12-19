@@ -5,7 +5,7 @@ import "../styles/popUp.css";
 const AlertDialogEliminar = ({ deleteMethod, objectID, redirectMethod }) => (
   <AlertDialog.Root>
     <AlertDialog.Trigger className="btn btn-rojo" asChild>
-      <button>Eliminar</button>
+      <button>Delete</button>
     </AlertDialog.Trigger>
 
     <AlertDialog.Portal>
@@ -13,17 +13,16 @@ const AlertDialogEliminar = ({ deleteMethod, objectID, redirectMethod }) => (
 
       <AlertDialog.Content className="popUpContent">
         <AlertDialog.Title className="popUpTitle">
-          ¿Estás seguro?
+          Are you sure?
         </AlertDialog.Title>
 
         <AlertDialog.Description className="popUpDescription">
-          Esta acción es irreversible y el elemento quedará completamente
-          borrado.
+          This action is irreversible, once you start, there's no going back.
         </AlertDialog.Description>
 
         <div style={{ display: "flex", gap: 25, justifyContent: "flex-end" }}>
           <AlertDialog.Cancel asChild>
-            <button className="btn btn-gris">Cancelar</button>
+            <button className="btn btn-gris">Cancel</button>
           </AlertDialog.Cancel>
 
           <AlertDialog.Action asChild>
@@ -31,7 +30,7 @@ const AlertDialogEliminar = ({ deleteMethod, objectID, redirectMethod }) => (
               onClick={() => deleteMethod(objectID)}
               className="btn btn-rojo"
             >
-              Eliminar
+              Delete
             </button>
           </AlertDialog.Action>
         </div>

@@ -3,7 +3,7 @@ import "../styles/popUp.css";
 export default function LoadingScreen() {
   return (
     <div className="popUpContent">
-      <span className="popUpTitle">Cargando...</span>
+      <span className="popUpTitle">Loading...</span>
     </div>
   );
 }

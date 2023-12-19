@@ -53,7 +53,7 @@ export default function TaskCard({ task }) {
                     <AlertDialogEliminar deleteMethod={deleteTask} objectID={task.id} />
 
                     <Link to={`/task/edit/${task.id}`} className="btn btn-azul">
-                        Editar
+                        Edit
                     </Link>
                 </div>
             </header>
@@ -75,7 +75,7 @@ export default function TaskCard({ task }) {
                 }}
                 >
                 <Link to={`/task/${task.id}`} className="btn btn-azul">
-                    Ver más
+                    See more
                 </Link>
             </div>
         </div>
