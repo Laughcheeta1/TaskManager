@@ -1,10 +1,10 @@
 import { z } from "zod";
+import { availableColours } from "../misc/AvailableColours";
 
 export const taskSchema = z.object({
-  title: z.string({
-    required_error: "Title is required",
-  }),
-  description: z.string({
-    required_error: "Description is required",
-  }),
+  name : z.string().min(1, { message : "The name is neccesary" }),
+  category : z.string().optional(),
+  expirationDate : z.date().optional(),
+  colour : z.enum(availableColours),
+  description : z.string().optional()
 });

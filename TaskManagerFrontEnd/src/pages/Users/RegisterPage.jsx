@@ -19,6 +19,7 @@ function RegisterPage() {
 
   const onSubmit = async (value) => {
     await signUp(value);
+    
   };
 
   const navigate = useNavigate();

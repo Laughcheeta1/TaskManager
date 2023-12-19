@@ -1,5 +1,4 @@
 import React from 'react'
-import sebsruiz from "../assets/sebsruiz.jpg";
 import yepsmeps from "../assets/yepsmeps.jpg";
 
 export default function HomePage() {
@@ -10,8 +9,7 @@ export default function HomePage() {
 
   return (
     <>
-      <h1>Seb y Yeps development team</h1>
-      <img src={sebsruiz} alt="Sebastian" style={imageStyle}></img>
+      <h1>Yeps development</h1>
       <img src={yepsmeps} alt="Santiago" style={imageStyle}></img>
     </>
   )

@@ -1,13 +1,15 @@
-import axios from "axios";
+import axios from "./axios";
 
-export const getTaskByNameRequest = async (name) => axios.get(`/tasks/getTaskByName/${name}`);
+export const getTaskByNameRequest = async (name) => axios.get(`/task/getTaskByName/${name}`);
 
-export const getAllTasksRequest = async () => axios.get("/tasks");
+export const getAllTasksRequest = async () => axios.get("/task");
 
-export const getTaskRequest = async (id) => axios.get(`/tasks/${id}`);
+export const getTaskRequest = async (id) => axios.get(`/task/${id}`);
 
-export const createTaskRequest = async (task) => axios.post("/tasks", task);
+export const changeTaskStateRequest = async (id, newState) => axios.put(`/task/changeState/${id}/state/${newState}`)
 
-export const updateTaskRequest = async (id, task) => axios.put(`/tasks/${id}`, task);
+export const createTaskRequest = async (task) => axios.post("/task", task);
 
-export const deleteTaskRequest = async (id) => axios.delete(`/tasks/${id}`);
+export const updateTaskRequest = async (id, task) => axios.put(`/task/${id}`, task);
+
+export const deleteTaskRequest = async (id) => axios.delete(`/task/${id}`);

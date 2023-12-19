@@ -1,10 +1,17 @@
 import { Link } from "react-router-dom";
 import { useTasks } from "../context/TasksContext";
 import { doneStatus, inProgressStatus, pendingStatus } from "../misc/TaskStatusNames";
+import AlertDialogEliminar from "./AlertDialogEliminar";
+
+
 
 
 export default function TaskCard({ task }) {
-    const { deleteTask } = useTasks();
+    const { deleteTask, changeTaskState } = useTasks();
+
+    const handleChangeState = (e) => {
+        changeTaskState(task.id, e.target.value);
+    };
 
     return (
         <div className="resultado-busqueda">
@@ -17,29 +24,18 @@ export default function TaskCard({ task }) {
                 }}
             >
                 
-                <label htmlFor="action">Acción:</label>
+                <label htmlFor="state">State:</label>
                 <select
-                name="action"
+                name="state"
                 type="text"
                 placeholder="Ej: Salida"
                 className="input"
-                {...register("action")}
+                value={task.state}
+                onChange={handleChangeState} // Change
                 >
-                    {task.state === pendingStatus ? (
-                        <option value={pendingStatus}>{pendingStatus}</option>
-                    ) : (
-                        <></>
-                    )}
-                    {task.state === inProgressStatus ? (
-                        <option value={inProgressStatus}>{inProgressStatus}</option>
-                    ) : (
-                        <></>
-                    )}
-                    {task.state === doneStatus ? (
-                        <option value={doneStatus}>{doneStatus}</option>
-                    ) : (
-                        <></>
-                    )}
+                    <option value={pendingStatus}>{pendingStatus}</option>
+                    <option value={inProgressStatus}>{inProgressStatus}</option>
+                    <option value={doneStatus}>{doneStatus}</option>
                 </select>
 
                 <h1

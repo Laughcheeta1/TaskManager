@@ -6,6 +6,8 @@ import LoginPage from "./pages/Users/LoginPage";
 import HomePage from "./pages/HomePage";
 import MenuPage from "./pages/MenuPage";
 
+import TaskFormPage from "./pages/Tasks/AddTask";
+
 import { TasksProvider } from "./context/TasksContext";
 
 import { AuthProvider } from "./context/AuthContext";
@@ -24,6 +26,7 @@ export default function App() {
                   <Route path="/" element={<HomePage />} />
                   <Route path="/login" element={<LoginPage />} />
                   <Route path="/register" element={<RegisterPage />} />
+                  <Route path="/add_task" element={<TaskFormPage />} />
 
                   <Route element={<ProtectedRoute />}>
                     <Route path="/menu" element={<MenuPage />} />

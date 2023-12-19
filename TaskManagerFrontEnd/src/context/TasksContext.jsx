@@ -4,6 +4,7 @@ import {
   getTaskByNameRequest,
   getAllTasksRequest,
   getTaskRequest,
+  changeTaskStateRequest,
   createTaskRequest,
   deleteTaskRequest,
   updateTaskRequest,
@@ -85,6 +86,18 @@ export function TasksProvider({ children })
     }
   };
 
+  const changeTaskState = async (id, newState) => {
+    try
+    {
+      await changeTaskStateRequest(id, newState);
+      getTasks();
+    }
+    catch (error)
+    {
+      console.log(error);
+    }
+  };
+
   const updateTask = async (id, newTaskFieds) => {
     try
     {
@@ -115,6 +128,7 @@ export function TasksProvider({ children })
         getTasks,
         getTaskByName,
         getTaskById,
+        changeTaskState,
         createTask,
         deleteTask,
         updateTask,
