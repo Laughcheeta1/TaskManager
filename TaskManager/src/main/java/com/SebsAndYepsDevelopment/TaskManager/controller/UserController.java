@@ -21,16 +21,14 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> loginUser(@RequestBody User user) throws UserNotFoundException, WrongPasswordException {
+    public ResponseEntity<User> loginUser(@RequestBody User user) throws UserNotFoundException, WrongPasswordException {
         System.out.println("Started login user process");
-        userService.loginUser(user);
-        return ResponseEntity.ok("The user has logged in");
+        return ResponseEntity.ok(userService.loginUser(user));
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> registerUser(@RequestBody User user) throws InvalidUserNameException {
+    public ResponseEntity<User> registerUser(@RequestBody User user) throws InvalidUserNameException {
         System.out.println("Started register user process");
-        userService.registerUser(user);
-        return ResponseEntity.status(HttpStatus.CREATED).body("The user has successfully been created");
+        return ResponseEntity.status(HttpStatus.CREATED).body(userService.registerUser(user));
     }
 }

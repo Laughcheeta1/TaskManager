@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.task.TaskRejectedException;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -19,20 +20,30 @@ public class TaskServiceImplementation implements TaskService{
         this.taskRepository = taskRepository;
     }
 
-    public List<Task> getTasksByName(String name)
+    public List<Task> getTasksByName(String name, String userName)
     {
-        return taskRepository.getTasksByName(name);
+        return taskRepository.getTasksByNameAndUserName(name, userName);
     }
 
-    public List<Task> getAllTasks()
+    public List<Task> getAllTasks(String userName)
     {
-        List<Task> tasks = taskRepository.findAll();
+        List<Task> tasks = taskRepository.findAllByUserName(userName);
+        tasks.sort(new Comparator<Task>() {
+            @Override
+            public int compare(Task o1, Task o2) {
+                if (o1.getExpirationDate() == null)
+                    return 1;
+                if (o2.getExpirationDate() == null)
+                    return -1;
+                return (o1.getExpirationDate().compareTo(o2.getExpirationDate()));
+            }
+        });
         System.out.println(tasks);
         return tasks;
     }
 
-    public Task getTaskById(String id) throws TaskNotFoundException {
-        return taskRepository.findById(id).orElseThrow(() -> new TaskNotFoundException(id));
+    public Task getTaskById(String id, String userName) throws TaskNotFoundException {
+        return taskRepository.findByIdAndUserName(id, userName).orElseThrow(() -> new TaskNotFoundException(id));
     }
 
     public void createTask(Task task)

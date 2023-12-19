@@ -18,20 +18,22 @@ public class UserServiceImplementation implements UserService{
     }
 
     @Override
-    public void loginUser(User user) throws UserNotFoundException, WrongPasswordException {
+    public User loginUser(User user) throws UserNotFoundException, WrongPasswordException {
         System.out.println(user);
         User userInDatabase = userRepository.findByUserName(user.getUserName()).orElseThrow(UserNotFoundException::new);
         if (user.getPassword().compareTo(userInDatabase.getPassword()) != 0)
             throw new WrongPasswordException();
+        return userInDatabase;
     }
 
     @Override
-    public void registerUser(User user) throws InvalidUserNameException  { // TODO: finish this
+    public User registerUser(User user) throws InvalidUserNameException  { // TODO: finish this
         if (userRepository.findByUserName(user.getUserName()).isPresent())
             throw new InvalidUserNameException();
 
         // TODO: Check if there's something to finish here, I personally do not remember
 
         userRepository.insert(user);
+        return user;
     }
 }

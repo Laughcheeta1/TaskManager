@@ -21,21 +21,21 @@ public class TaskController {
         this.taskService = taskService;
     }
 
-    @GetMapping("/getTaskByName/{name}")
-    public ResponseEntity<List<Task>> getTasksByName(@PathVariable("name") String name)
+    @GetMapping("/user/{userName}/getTaskByName/{name}")
+    public ResponseEntity<List<Task>> getTasksByName(@PathVariable("userName") String userName, @PathVariable("name") String name)
     {
-        return ResponseEntity.ok(taskService.getTasksByName(name));
+        return ResponseEntity.ok(taskService.getTasksByName(name, userName));
     }
 
-    @GetMapping
-    public ResponseEntity<List<Task>> getAllTasks()
+    @GetMapping("/user/{userName}")
+    public ResponseEntity<List<Task>> getAllTasks(@PathVariable("userName") String userName)
     {
-        return ResponseEntity.ok(taskService.getAllTasks());
+        return ResponseEntity.ok(taskService.getAllTasks(userName));
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Task> getTaskById(@PathVariable("id") String id) throws TaskNotFoundException {
-        return ResponseEntity.ok(taskService.getTaskById(id));
+    @GetMapping("/user/{userName}/task/{id}")
+    public ResponseEntity<Task> getTaskById(@PathVariable("userName") String userName, @PathVariable("id") String id) throws TaskNotFoundException {
+        return ResponseEntity.ok(taskService.getTaskById(id, userName));
     }
 
     @PostMapping

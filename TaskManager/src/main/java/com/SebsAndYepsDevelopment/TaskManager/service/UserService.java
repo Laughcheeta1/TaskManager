@@ -6,7 +6,7 @@ import com.SebsAndYepsDevelopment.TaskManager.exceptions.UserNotFoundException;
 import com.SebsAndYepsDevelopment.TaskManager.exceptions.WrongPasswordException;
 
 public interface UserService {
-    void loginUser(User user) throws UserNotFoundException, WrongPasswordException;
+    User loginUser(User user) throws UserNotFoundException, WrongPasswordException;
 
-    void registerUser(User user) throws InvalidUserNameException;
+    User registerUser(User user) throws InvalidUserNameException;
 }
