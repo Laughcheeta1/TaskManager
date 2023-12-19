@@ -8,7 +8,7 @@ export default function ItemsPage() {
   const { getTaskByName, getTasks, tasks } = useTasks();
 
   useEffect(() => {
-    getItems();
+    getTasks();
   }, []);
 
   return (

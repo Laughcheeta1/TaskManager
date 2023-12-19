@@ -14,7 +14,6 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [errors, setErrors] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   const signUp = async (user) => {  
     try {
@@ -28,6 +27,8 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       console.log(error);
       setErrors(() => [error.response.data]);
+      console.log("the current error is: ")
+      console.log(errors);
     }
   };
 
@@ -41,6 +42,8 @@ export const AuthProvider = ({ children }) => {
     } catch (error) { 
       console.log(error);
       setErrors(() => [error.response.data]);
+      console.log("the current error is: ")
+      console.log(errors);
     }
   };
 
@@ -91,7 +94,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ signUp, user, isAuthenticated, errors, signin, loading, logout }}
+      value={{ signUp, user, isAuthenticated, errors, signin, logout }}
     >
       {children}
     </AuthContext.Provider>

@@ -4,8 +4,9 @@ import RegisterPage from "./pages/Users/RegisterPage";
 import LoginPage from "./pages/Users/LoginPage";
 
 import HomePage from "./pages/HomePage";
-import ProfilePage from "./pages/Users/ProfilePage";
 import MenuPage from "./pages/MenuPage";
+
+import { TasksProvider } from "./context/TasksContext";
 
 import { AuthProvider } from "./context/AuthContext";
 
@@ -16,6 +17,7 @@ import ProtectedRoute from "./ProtectedRoute";
 export default function App() {
   return (
     <AuthProvider>
+      <TasksProvider>
               <BrowserRouter>
                 <Navbar />
                 <Routes>
@@ -25,10 +27,10 @@ export default function App() {
 
                   <Route element={<ProtectedRoute />}>
                     <Route path="/menu" element={<MenuPage />} />
-                    <Route path="/profile" element={<ProfilePage />} />
                   </Route>
                 </Routes>
               </BrowserRouter>
+      </TasksProvider>
     </AuthProvider>
   );
 }
