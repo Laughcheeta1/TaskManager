@@ -25,7 +25,7 @@ function RegisterPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isAuthenticated) navigate("/menu");
+    if (isAuthenticated) navigate("/task_page");
   }, [isAuthenticated]);
 
   return (

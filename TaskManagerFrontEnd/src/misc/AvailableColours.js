@@ -8,11 +8,11 @@ export const availableColours = [
     "YELLOW"];
 
 export const colourMap = {
-    "RED": "#FF0000",
-    "ORANGE": "#FF7F00",
-    "BLUE": "#0000FF",
-    "GREEN": "#00FF00",
+    "RED": "#ff0000",
+    "ORANGE": "#ff7f00",
+    "BLUE": "#0000ff",
+    "GREEN": "#00ff00",
     "PURPLE": "#800080",
-    "WHITE": "#FFFFFF",
-    "YELLOW": "#FFFF00"
+    "WHITE": "#ffffff",
+    "YELLOW": "#ffff00"
 }

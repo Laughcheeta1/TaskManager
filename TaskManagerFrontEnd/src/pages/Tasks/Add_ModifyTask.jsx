@@ -32,7 +32,7 @@ export default function TaskFormPage() {
   };
 
   useEffect(() => {
-    if (wasSubmitted && taskErrors.length === 0) return navigate("/items");
+    if (wasSubmitted && taskErrors.length === 0) return navigate("/task_page");
     setWasSubmitted(false);
   }, [taskErrors, wasSubmitted]);
 
@@ -146,7 +146,7 @@ export default function TaskFormPage() {
             <Link
               style={{ width: "100%" }}
               className="btn btn-gris"
-              to="/items"
+              to="/task_page"
             >
               Cancelar
             </Link>

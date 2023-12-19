@@ -4,9 +4,9 @@ import RegisterPage from "./pages/Users/RegisterPage";
 import LoginPage from "./pages/Users/LoginPage";
 
 import HomePage from "./pages/HomePage";
-import MenuPage from "./pages/MenuPage";
+import TaskPage from "./pages/TaskPage";
 
-import TaskFormPage from "./pages/Tasks/AddTask";
+import TaskFormPage from "./pages/Tasks/Add_ModifyTask";
 
 import { TasksProvider } from "./context/TasksContext";
 
@@ -29,7 +29,7 @@ export default function App() {
                   <Route path="/add_task" element={<TaskFormPage />} />
 
                   <Route element={<ProtectedRoute />}>
-                    <Route path="/menu" element={<MenuPage />} />
+                    <Route path="/task_page" element={<TaskPage />} />
                   </Route>
                 </Routes>
               </BrowserRouter>

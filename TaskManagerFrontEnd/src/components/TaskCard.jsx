@@ -4,8 +4,6 @@ import { doneStatus, inProgressStatus, pendingStatus } from "../misc/TaskStatusN
 import AlertDialogEliminar from "./AlertDialogEliminar";
 
 
-
-
 export default function TaskCard({ task }) {
     const { deleteTask, changeTaskState } = useTasks();
 
@@ -14,7 +12,8 @@ export default function TaskCard({ task }) {
     };
 
     return (
-        <div className="resultado-busqueda">
+        // Change the color of the div based on the Color atribute of the task object
+        <div className="resultado-busqueda" style={{ backgroundColor: task.color }}>
             <header
                 style={{
                 display: "flex",
@@ -24,7 +23,6 @@ export default function TaskCard({ task }) {
                 }}
             >
                 
-                <label htmlFor="state">State:</label>
                 <select
                 name="state"
                 type="text"
@@ -54,14 +52,18 @@ export default function TaskCard({ task }) {
                 >
                     <AlertDialogEliminar deleteMethod={deleteTask} objectID={task.id} />
 
-                    <Link to={`/tasks/edit/${task.id}`} className="btn btn-azul">
+                    <Link to={`/task/edit/${task.id}`} className="btn btn-azul">
                         Editar
                     </Link>
                 </div>
             </header>
 
             <p style={{ marginRight: "1rem", fontSize: "16px" }}>
-                <span style={{ fontWeight: "500" }}>Due date:</span> {task.expirationDate}
+                {task.expirationDate && (
+                    <p style={{ marginRight: "1rem", fontSize: "16px" }}>
+                        <span style={{ fontWeight: "500" }}>Due date:</span> {new Date(task.expirationDate).toDateString()}
+                    </p>
+                )}
             </p>
         </div>
     );

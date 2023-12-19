@@ -15,7 +15,7 @@ const AlertDialogCrear = ({ buttonMessage, descriptionMessage, onSubmit }) => (
 
       <AlertDialog.Content className="popUpContent">
         <AlertDialog.Title className="popUpTitle">
-          ¿Estás seguro?
+          ¿Are you sure?
         </AlertDialog.Title>
 
         <AlertDialog.Description className="popUpDescription">
@@ -24,7 +24,7 @@ const AlertDialogCrear = ({ buttonMessage, descriptionMessage, onSubmit }) => (
 
         <div style={{ display: "flex", gap: 25, justifyContent: "flex-end" }}>
           <AlertDialog.Cancel asChild>
-            <button className="btn btn-gris">Cancelar</button>
+            <button className="btn btn-gris">Cancel</button>
           </AlertDialog.Cancel>
 
           <AlertDialog.Action
@@ -34,7 +34,7 @@ const AlertDialogCrear = ({ buttonMessage, descriptionMessage, onSubmit }) => (
             }}
           >
             <button type="submit" className="btn btn-verde">
-              Guardar
+              Save
             </button>
           </AlertDialog.Action>
         </div>

@@ -4,7 +4,7 @@ import TaskCard from "../components/TaskCard";
 import BarraBusqueda from "../components/BarraBusqueda";
 import "../styles/busqueda.css";
 
-export default function ItemsPage() {
+export default function TaskPage() {
   const { getTaskByName, getTasks, tasks } = useTasks();
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export default function ItemsPage() {
       </h1>
       <BarraBusqueda placeholder="Search by name" route="/add_task" searchMethod={getTaskByName} refillMethod={getTasks} />
       <div className="container-resultados">
-        <h2 style={{ fontSize: "26px" }}>Tasks.</h2>
+        <h2 style={{ fontSize: "26px" }}>Tasks</h2>
 
         {tasks.map((task) => (
           <TaskCard task={task} key={task.id} />

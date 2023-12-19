@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { processTask } from "../misc/ProcessData.js";
+import { useAuth } from "./AuthContext.jsx";
+import { pendingStatus } from "../misc/TaskStatusNames.js";
 
 import {
   getTaskByNameRequest,
@@ -25,6 +26,17 @@ export function TasksProvider({ children })
 {
   const [tasks, setTasks] = useState([]);
   const [errors, setErrors] = useState([]);
+  const { user } = useAuth();
+
+  const processTask = (task) => { // This is supposed to process the task after it comes out the Add new task page.
+    if (task["expirationDate"])
+        task["expirationDate"] = new Date(task["expirationDate"]);
+    
+    task["userName"] = user.userName;
+    task["state"] = pendingStatus;
+    return task;
+  }
+
 
   const getTaskByName = async (name) => {
     try

@@ -21,7 +21,7 @@ function LoginPage() {
   const onSubmit = (data) => signin(data);
 
   useEffect(() => {
-    if (isAuthenticated) navigate("/menu");
+    if (isAuthenticated) navigate("/task_page");
   }, [isAuthenticated]);
 
   return (
