@@ -42,27 +42,23 @@ function LoginPage() {
                 marginBottom: ".6rem",
               }}
             >
-              Bienvenido de nuevo.
+              Bienvenido de nuevo
             </h1>
-            <p style={{ fontSize: "14px" }}>
-              Aquí podras consultar toda la información de{" "}
-              <span style={{ fontWeight: "600" }}>Espacios Móviles S.A.S.</span>
-            </p>
           </div>
 
-          <label className="input-label" htmlFor="email">
-            Correo:
+          <label className="input-label" htmlFor="userName">
+            Nombre de usuario:
             <p style={{ marginLeft: "1rem" }} className="input-errors">
-              {errors.email?.message}
+              {errors.userName?.message}
             </p>
           </label>
 
           <input
-            type="email"
-            name="email"
-            {...register("email", { required: true })}
+            type="text"
+            name="userName"
+            {...register("userName", { required: true })}
             className="auth-input"
-            placeholder="Correo electrónico"
+            placeholder="Nombre de usuario"
           />
 
           <label className="input-label">
