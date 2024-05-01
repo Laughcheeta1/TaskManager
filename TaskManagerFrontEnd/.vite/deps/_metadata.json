@@ -1,0 +1,74 @@
+{
+  "hash": "59713a8b",
+  "browserHash": "124c5380",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "bd1f96eb",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "cc5e445a",
+      "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.js",
+      "file": "react-router-dom.js",
+      "fileHash": "c40e6129",
+      "needsInterop": false
+    },
+    "react-hook-form": {
+      "src": "../../node_modules/react-hook-form/dist/index.esm.mjs",
+      "file": "react-hook-form.js",
+      "fileHash": "62d0f37c",
+      "needsInterop": false
+    },
+    "@hookform/resolvers/zod": {
+      "src": "../../node_modules/@hookform/resolvers/zod/dist/zod.mjs",
+      "file": "@hookform_resolvers_zod.js",
+      "fileHash": "77ade2bb",
+      "needsInterop": false
+    },
+    "js-cookie": {
+      "src": "../../node_modules/js-cookie/dist/js.cookie.mjs",
+      "file": "js-cookie.js",
+      "fileHash": "9617bf18",
+      "needsInterop": false
+    },
+    "zod": {
+      "src": "../../node_modules/zod/lib/index.mjs",
+      "file": "zod.js",
+      "fileHash": "6e6b5dae",
+      "needsInterop": false
+    },
+    "@radix-ui/react-alert-dialog": {
+      "src": "../../node_modules/@radix-ui/react-alert-dialog/dist/index.mjs",
+      "file": "@radix-ui_react-alert-dialog.js",
+      "fileHash": "1a90b3c9",
+      "needsInterop": false
+    },
+    "axios": {
+      "src": "../../node_modules/axios/index.js",
+      "file": "axios.js",
+      "fileHash": "0e799cfc",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-KOT3VG2E": {
+      "file": "chunk-KOT3VG2E.js"
+    },
+    "chunk-MKG3NT3Y": {
+      "file": "chunk-MKG3NT3Y.js"
+    },
+    "chunk-67XTWVEJ": {
+      "file": "chunk-67XTWVEJ.js"
+    },
+    "chunk-5WWUZCGV": {
+      "file": "chunk-5WWUZCGV.js"
+    }
+  }
+}
